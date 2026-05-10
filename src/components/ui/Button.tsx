@@ -30,9 +30,9 @@ export const Button = ({
 				disabled:opacity-50
 				disabled:cursor-not-allowed
                 disabled:hover:bg-primary
-				focus:outline-none
-				focus:ring-primary/30
-				focus:ring-4
+				focus-visible:outline-none
+			  focus-visible:ring-primary/30
+				focus-visible:ring-4
 				${className}
 			`}
 			disabled={disabled || loading}

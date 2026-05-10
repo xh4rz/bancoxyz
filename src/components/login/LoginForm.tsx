@@ -4,13 +4,14 @@ import { LoginFormData, loginFormSchema } from '../../validation';
 import { Button, FormInput } from '../ui';
 import { ApiError } from '../../types';
 import { SignInIcon } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../store';
 
-interface LoginFormProps {
-	loading?: boolean;
-	onSubmit: (data: LoginFormData) => Promise<void>;
-}
+export const LoginForm = () => {
+	const navigate = useNavigate();
 
-export const LoginForm = ({ loading = false, onSubmit }: LoginFormProps) => {
+	const { login, loading } = useAuthStore();
+
 	const {
 		control,
 		handleSubmit,
@@ -27,7 +28,8 @@ export const LoginForm = ({ loading = false, onSubmit }: LoginFormProps) => {
 
 	const handleFormSubmit = async (data: LoginFormData) => {
 		try {
-			await onSubmit(data);
+			await login(data);
+			navigate('/transfers');
 		} catch (error) {
 			const errorObj = error as ApiError;
 			setError('root', {
@@ -66,8 +68,11 @@ export const LoginForm = ({ loading = false, onSubmit }: LoginFormProps) => {
 			/>
 
 			{errors.root && (
-				<span className="text-red-500">{errors.root.message}</span>
+				<div className="rounded-lg p-3 text-sm  bg-red-500/10 text-red-500">
+					{errors.root.message}
+				</div>
 			)}
+
 			<Button
 				type="submit"
 				className="mt-4"

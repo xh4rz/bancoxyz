@@ -1,22 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import { Balance } from '../components/balance';
-import { getBalance } from '../services/transfer';
+import { TransferForm } from '../components/transfer';
 
 export const TransfersPage = () => {
-	const { data: dataBalance, isLoading: isLoadingBalance } = useQuery({
-		queryKey: ['balance'],
-		queryFn: getBalance
-	});
-
 	return (
-		<div className="flex justify-center">
-			<div className="w-full max-w-xs">
-				<Balance
-					balance={dataBalance?.accountBalance ?? 0}
-					currency={dataBalance?.currency ?? 'USD'}
-					loading={isLoadingBalance}
-				/>
-			</div>
+		<div className="w-full max-w-sm rounded-xl bg-zinc-900 p-6 border-2 border-zinc-800 shadow-lg">
+			<TransferForm />
 		</div>
 	);
 };

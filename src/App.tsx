@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { LoginPage, TransfersPage } from './pages';
+import { DashboardLayout } from './layouts/DashboardLayout';
+import { LoginPage, TransfersListPage, TransfersPage } from './pages';
 import { PrivateRoute, PublicRoute } from './router';
 
 function App() {
@@ -9,9 +10,14 @@ function App() {
 				<Route element={<PublicRoute />}>
 					<Route path="/" element={<LoginPage />} />
 				</Route>
+
 				<Route element={<PrivateRoute />}>
-					<Route path="/transfers" element={<TransfersPage />} />
+					<Route element={<DashboardLayout />}>
+						<Route path="/transfers" element={<TransfersPage />} />
+						<Route path="/transfers-list" element={<TransfersListPage />} />
+					</Route>
 				</Route>
+
 				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
 		</div>
