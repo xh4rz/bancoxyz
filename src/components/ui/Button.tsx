@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { Spinner } from './';
+import { Spinner } from './Spinner';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	loading?: boolean;
