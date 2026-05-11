@@ -29,7 +29,10 @@ export const Balance = ({ balance, currency, loading }: BalanceProps) => {
 				<div className="flex items-center justify-between gap-4">
 					<div className="flex-1 min-w-0">
 						{loading ? (
-							<div className="mt-1 h-12 animate-pulse rounded-lg bg-zinc-800" />
+							<div
+								data-testid="balance-skeleton"
+								className="mt-1 h-12 animate-pulse rounded-lg bg-zinc-800"
+							/>
 						) : (
 							<p className="min-h-12 flex items-center">
 								<span className="inline-block  text-4xl font-bold text-white">
