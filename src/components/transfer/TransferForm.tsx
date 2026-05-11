@@ -1,10 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-	formatDateToISO,
-	TransferFormData,
-	transferFormSchema
-} from '../../validation';
+import { TransferFormData, transferFormSchema } from '../../validation';
 import { Button, FormInput } from '../ui';
 import { ApiError } from '../../types';
 import { PaperPlaneTiltIcon } from '@phosphor-icons/react';
@@ -12,6 +8,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { postTransfer } from '../../services/transfer';
 import { CurrencyInput } from '../ui/CurrencyInput';
+import { formatDate } from '../../utils';
 
 export const TransferForm = () => {
 	const queryClient = useQueryClient();
@@ -55,7 +52,7 @@ export const TransferForm = () => {
 			await transferMutation({
 				...data,
 				currency: 'USD',
-				transferDate: formatDateToISO(new Date())
+				transferDate: formatDate(new Date())
 			});
 		} catch (error) {
 			console.error(error);
