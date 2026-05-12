@@ -5,7 +5,7 @@ import { PrivateRoute, PublicRoute } from './router';
 
 function App() {
 	return (
-		<div className="bg-black min-h-screen p-6">
+		<div className="bg-black min-h-screen">
 			<Routes>
 				<Route element={<PublicRoute />}>
 					<Route path="/" element={<LoginPage />} />

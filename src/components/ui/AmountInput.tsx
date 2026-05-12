@@ -4,7 +4,7 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form';
 
 import { NumericFormat } from 'react-number-format';
 
-type CurrencyInputProps<T extends FieldValues> = {
+type AmountInputProps<T extends FieldValues> = {
 	name: FieldPath<T>;
 	control: Control<T>;
 	label: string;
@@ -13,14 +13,14 @@ type CurrencyInputProps<T extends FieldValues> = {
 	placeholder?: string;
 } & React.ComponentProps<typeof NumericFormat>;
 
-export const CurrencyInput = <T extends FieldValues>({
+export const AmountInput = <T extends FieldValues>({
 	name,
 	control,
 	label,
 	required,
 
 	...inputProps
-}: CurrencyInputProps<T>) => {
+}: AmountInputProps<T>) => {
 	return (
 		<Controller
 			name={name}
@@ -35,7 +35,7 @@ export const CurrencyInput = <T extends FieldValues>({
 
 					<NumericFormat
 						{...inputProps}
-						value={field.value}
+						value={field.value ?? ''}
 						onValueChange={(values) => {
 							field.onChange(values.floatValue ?? '');
 						}}

@@ -1,13 +1,12 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TransferFormData, transferFormSchema } from '../../validation';
-import { Button, FormInput } from '../ui';
+import { AmountInput, Button, FormInput } from '../ui';
 import { ApiError } from '../../types';
 import { PaperPlaneTiltIcon } from '@phosphor-icons/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
 import { postTransfer } from '../../services/transfer';
-import { CurrencyInput } from '../ui/CurrencyInput';
 import { formatDate } from '../../utils';
 
 export const TransferForm = () => {
@@ -22,7 +21,7 @@ export const TransferForm = () => {
 		resolver: zodResolver(transferFormSchema),
 		mode: 'onChange',
 		defaultValues: {
-			value: undefined,
+			amount: undefined,
 			payeerDocument: ''
 		}
 	});
@@ -50,7 +49,8 @@ export const TransferForm = () => {
 	const handleFormSubmit = async (data: TransferFormData) => {
 		try {
 			await transferMutation({
-				...data,
+				value: data.amount,
+				payeerDocument: data.payeerDocument,
 				currency: 'USD',
 				transferDate: formatDate(new Date())
 			});
@@ -65,12 +65,12 @@ export const TransferForm = () => {
 			className="flex flex-col gap-4"
 			noValidate
 		>
-			<CurrencyInput
+			<AmountInput
 				autoFocus
 				required
 				disabled={isPending}
 				control={control}
-				name="value"
+				name="amount"
 				label="Amount"
 				placeholder="Enter amount"
 			/>

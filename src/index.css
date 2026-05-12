@@ -7,3 +7,7 @@
 		@apply w-full rounded-lg border border-zinc-700 bg-zinc-950 text-white px-3 py-2 outline-none focus:border-primary;
 	}
 }
+
+input[type='date']::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+}

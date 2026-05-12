@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const transferFormSchema = z.object({
-	value: z.number().min(1, 'Minimum amount is 1'),
+	amount: z.number().min(1, 'Minimum amount is 1'),
 	payeerDocument: z
 		.string()
 		.min(1, 'Document is required')

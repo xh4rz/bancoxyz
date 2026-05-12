@@ -14,7 +14,7 @@ export const DashboardLayout = () => {
 	});
 
 	return (
-		<div className="flex flex-col gap-6 items-center">
+		<div className="flex flex-col gap-6 items-center p-6">
 			<div className="flex gap-2">
 				<Link to="/transfers">
 					<Button className="h-8 bg-zinc-900 hover:bg-zinc-900">

@@ -1,2 +1,3 @@
 export * from './loginFormSchema';
-export * from './TransferFormSchema';
+export * from './transferFormSchema';
+export * from './scheduledTransferFormSchema';
