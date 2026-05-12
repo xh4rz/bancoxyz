@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { Balance } from './Balance';
-import { formatCurrency } from '../../utils';
+import { Balance } from '../components/balance/Balance';
+import { formatCurrency } from '../utils';
 
 describe('Pruebas críticas de Balance', () => {
 	const props = {

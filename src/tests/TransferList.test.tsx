@@ -1,8 +1,8 @@
+import { userEvent } from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { useQuery } from '@tanstack/react-query';
-import { TransferList } from './TransferList';
-import { TransferList as TransferListResponse } from '../../types';
+import { TransferList } from '../components/transfer';
+import { TransferList as TransferListResponse } from '../types';
 
 jest.mock('@tanstack/react-query', () => ({
 	useQuery: jest.fn()

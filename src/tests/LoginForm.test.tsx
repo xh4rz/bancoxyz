@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
-import { LoginForm } from './LoginForm';
-import { useAuthStore } from '../../store';
+import { LoginForm } from '../components/login/LoginForm';
+import { useAuthStore } from '../store';
 
 const mockNavigate = jest.fn();
 
@@ -13,7 +13,7 @@ jest.mock(
 	{ virtual: true }
 );
 
-jest.mock('../../store', () => ({
+jest.mock('../store', () => ({
 	useAuthStore: jest.fn()
 }));
 
